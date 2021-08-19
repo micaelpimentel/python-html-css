@@ -19,6 +19,10 @@ def antes_requisicao():
 def depois_request(exc):
     g.bd.close()
 
+@app.route('/')
+def exibir_entradas():
+    return "Aqui estarao as postagens"
+
 @app.route('/hello')
 def pagina_inicial():
     return "Hello world, caraiu, pyrra!!"
