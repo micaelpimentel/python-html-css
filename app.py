@@ -21,7 +21,7 @@ def depois_request(exc):
 
 @app.route('/')
 def exibir_entradas():
-    return "Aqui estarao as postagens"
+    return render_template('exibir_entradas.html')
 
 @app.route('/hello')
 def pagina_inicial():
