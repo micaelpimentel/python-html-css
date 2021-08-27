@@ -32,7 +32,7 @@ def exibir_entradas():
 
     for titulo, texto in cur.fetchall():
         entradas.append({'titulo': titulo, 'texto': texto})
-    return render_template('exibir_entradas.html', entradas=entradas)
+    return render_template('exibir_entradas.html', entradas=entradas2)
 
 @app.route('/hello')
 def pagina_inicial():
@@ -50,10 +50,11 @@ def inserir_entrada():
 @app.route('/logout')
 def logout():
     session.pop('logado', None)
-    return redirect(irl_for('exibir_entradas'))
+    return redirect(url_for('exibir_entradas'))
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    erro = None
     if request.method == "POST":
         if request.form['campoUsuario'] != 'admin' \
             and request.form['campoSenha'] != 'admin':
